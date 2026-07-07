@@ -1,0 +1,1416 @@
+/* src/index.css - cơ bản để chạy đẹp */
+:root {
+  --blue: #2563eb;
+  --muted: #6b7280;
+  --bg: #f3f4f6;
+}
+
+body,
+html,
+#root {
+  height: 100%;
+  margin: 0;
+  font-family: Inter, Roboto, system-ui, sans-serif;
+  background: var(--bg);
+}
+
+.app-root {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* Header tổng thể */
+.app-header {
+  background: var(--blue);
+  color: white;
+  padding: 12px 16px;
+
+}
+
+
+/* Nội dung bên trong header */
+.header-inner {
+  display: flex;
+  flex-direction: column;
+  /* xếp 2 hàng: top-row + search-area */
+  gap: 12px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Hàng trên: logo + info + video */
+.top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
+
+/* Brand */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+
+.brand-sub {
+  font-size: 22px;
+  font-weight: 500;
+}
+
+/* Thông tin thời gian + nhân viên */
+.time-info {
+  text-align: right;
+  font-size: 20px;
+  opacity: 0.9;
+}
+
+/* Video camera nằm ngang hàng trên */
+.header-video {
+  width: 200px;
+  height: 150px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+/* Hàng dưới: tìm kiếm + quét mã */
+.search-area {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* Search box */
+.search-box {
+  flex: 1;
+  min-width: 0;
+  position: relative;
+}
+
+/* Input */
+.search-box input {
+  width: 100%;
+  padding: 10px 12px 10px 36px;
+  border-radius: 8px;
+  border: 0;
+  outline: none;
+  box-sizing: border-box;
+}
+
+/* Icon */
+.search-box .icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.7;
+}
+
+/* Nút quét mã */
+.btn-scan {
+  flex-shrink: 0;
+  background: white;
+  color: var(--blue);
+  padding: 10px 12px;
+  border-radius: 8px;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.btn-scan:hover {
+  background: #f0f0f0;
+}
+
+
+
+/* Body */
+.app-body {
+  display: flex;
+  flex: 1;
+  gap: 12px;
+  max-width: 1400px;
+  margin: 12px auto;
+  width: 100%;
+  padding: 0 12px;
+}
+
+.left-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Category */
+.category-bar {
+  display: flex;
+  gap: 8px;
+  padding: 4px 0;
+}
+
+.btn-cat {
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 0;
+  background: white;
+  cursor: pointer;
+}
+
+.btn-cat.active {
+  background: var(--blue);
+  color: white;
+}
+
+/* Cart Panel */
+.cart-panel {
+  width: 360px;
+  height: 900px;
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #e6e6e6;
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  box-sizing: border-box;
+}
+
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cart-header .left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cart-header h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.cart-header .badge {
+  background: var(--blue, #3b82f6);
+  color: white;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 999px;
+}
+
+.btn-clear {
+  background: none;
+  border: 0;
+  color: #ef4444;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cart-body {
+  flex: 1;
+  overflow-y: auto;
+  margin: 8px 0;
+}
+
+.empty {
+  text-align: center;
+  color: #6b7280;
+  padding: 32px 0;
+}
+
+.empty .big {
+  font-size: 48px;
+  margin-bottom: 12px;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  border-radius: 8px;
+  background: #f8fafc;
+  margin-bottom: 8px;
+}
+
+.ci-left {
+  flex: 1;
+}
+
+.ci-name {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.ci-price {
+  color: #111;
+  font-size: 0.95rem;
+}
+
+.ci-right {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.qty-control {
+  display: flex;
+  align-items: center;
+  border: 1px solid #e6e6e6;
+  border-radius: 8px;
+  overflow: hidden;
+  background: white;
+}
+
+.qty-control button {
+  border: 0;
+  padding: 6px 8px;
+  cursor: pointer;
+  background: none;
+}
+
+.qty-control span {
+  padding: 0 8px;
+  min-width: 24px;
+  text-align: center;
+}
+
+.ci-subtotal {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.btn-remove {
+  border: 0;
+  background: none;
+  color: #ef4444;
+  cursor: pointer;
+}
+
+.cart-footer {
+  border-top: 1px solid #eee;
+  margin-top: 8px;
+  padding-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.line {
+  display: flex;
+  justify-content: space-between;
+  color: #6b7280;
+}
+
+.line.total {
+  font-weight: 700;
+  color: #111;
+  font-size: 1.05rem;
+}
+
+.btn-checkout {
+  width: 100%;
+  border: 0;
+  border-radius: 8px;
+  background: var(--blue, #3b82f6);
+  color: white;
+  font-weight: 700;
+  padding: 10px;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+.btn-checkout.disabled {
+  background: #e5e7eb;
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+
+/* PAY */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+
+.modal {
+  width: 420px;
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.total-box {
+  background: #f1f5f9;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.methods {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.methods button {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #e6e6e6;
+  background: white;
+  cursor: pointer;
+}
+
+.methods button.active {
+  border-color: var(--blue);
+  background: rgba(37, 99, 235, 0.06);
+}
+
+.cash-input input {
+  width: 100%;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #e6e6e6;
+}
+
+.change.pos {
+  color: green;
+}
+
+.change.neg {
+  color: red;
+}
+
+.modal-footer {
+  margin-top: 12px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-confirm {
+  background: var(--blue);
+  color: white;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 0;
+  cursor: pointer;
+}
+
+.btn-confirm.disabled {
+  background: #e5e7eb;
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+
+/*ProductGrid.css */
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .product-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .product-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 1280px) {
+  .product-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+.product-card {
+  background: #fff;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.product-image-wrapper {
+  position: relative;
+  background: #ffffff;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-image-wrapper img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.product-image-wrapper .hover-icon {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(59, 130, 246, 0);
+  transition: background-color 0.2s;
+}
+
+.product-card:hover .hover-icon {
+  background-color: rgba(59, 130, 246, 0.1);
+}
+
+.product-name {
+  font-weight: 600;
+  margin-top: 0.5rem;
+  color: #1f2937;
+  /* gray-900 */
+}
+
+.product-price {
+  font-weight: 700;
+  color: #3b82f6;
+  /* blue-600 */
+  margin-top: 0.25rem;
+}
+
+.product-category {
+  font-size: 0.75rem;
+  color: #6b7280;
+  /* gray-500 */
+  margin-top: 0.25rem;
+}
+
+/* Container chung */
+.app-login {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f3f4f6;
+  /* màu xám nhạt */
+}
+
+/* Form login */
+.login-form {
+  width: 100%;
+  max-width: 400px;
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.login-form:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.login-form h2 {
+  text-align: center;
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: #1f2937;
+  /* text-gray-800 */
+}
+
+.login-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #374151;
+  /* text-gray-700 */
+}
+
+
+.login-form button {
+  width: 100%;
+  background: linear-gradient(90deg, #30afe6, #0068b8);
+  color: white;
+  font-weight: 600;
+  padding: 0.65rem 0;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.login-form button:hover {
+  background-color: #30afe6;
+  /* blue-600 */
+  transform: translateY(-1px);
+}
+
+.login-form .error-message {
+  color: #dc2626;
+  /* red-600 */
+  font-size: 0.9rem;
+  margin-bottom: 0.75rem;
+  text-align: center;
+}
+
+/* src/index.css hoặc PaymentModal.css */
+
+/* Backdrop */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* src/styles/paymentModal.css */
+
+/* Nền mờ */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Modal chính */
+.modal {
+  background: #fff;
+  width: 400px;
+  max-width: 90%;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.2s ease;
+}
+
+/* Header */
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 800;
+
+  background: linear-gradient(135deg,
+      #2563eb,
+      #1e40af);
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.modal-header .close {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Body */
+.modal-body {
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Customer section */
+.customer-section label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.customer-section input {
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin-bottom: 8px;
+}
+
+.customer-list {
+  max-height: 150px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.customer-item {
+  padding: 8px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #f9f9f9;
+  transition: background 0.2s;
+}
+
+.customer-item:hover {
+  background: #e6f7ff;
+}
+
+.customer-item.selected {
+  background: #bae7ff;
+  font-weight: 600;
+}
+
+.btn-create-customer {
+  margin-top: 8px;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: linear-gradient(90deg, #0068b8, #30afe6);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.create-customer-form input {
+  width: 100%;
+  margin-bottom: 8px;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.create-customer-form button {
+  padding: 8px 12px;
+  margin-right: 8px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.create-customer-form button:first-child {
+  background: #52c41a;
+  color: #fff;
+}
+
+.create-customer-form button:last-child {
+  background: #f5222d;
+  color: #fff;
+}
+
+/* Total box */
+.total-box {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.total-box .big {
+  font-size: 1.2rem;
+  color: #1890ff;
+}
+
+/* Payment methods */
+.methods {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.methods button {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 0;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background: #f5f5f5;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.methods button.active {
+  background: #1890ff;
+  color: white;
+  border-color: #1890ff;
+}
+
+.cash-input input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 6px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.change {
+  margin-top: 6px;
+  font-weight: 600;
+}
+
+.change.pos {
+  color: #52c41a;
+}
+
+.change.neg {
+  color: #f5222d;
+}
+
+/* QR Box */
+.qr-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* Footer */
+.modal-footer {
+  padding: 16px 20px;
+  border-top: 1px solid #eee;
+}
+
+.btn-confirm {
+  width: 100%;
+  padding: 10px;
+  background: #1890ff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-confirm.disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.product-card.out-of-stock {
+  opacity: 0.5;
+  pointer-events: none;
+  position: relative;
+}
+
+.sold-out-badge {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: red;
+  color: white;
+  padding: 8px 14px;
+  font-weight: bold;
+  font-size: 14px;
+  border-radius: 6px;
+  z-index: 10;
+}
+
+
+.modal {
+  background: rgb(255, 255, 255);
+  border-radius: 12px;
+  max-width: 500px;
+  width: 90%;
+  padding: 20px;
+  margin: auto;
+}
+
+.qr-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.qr-box img {
+  width: 400px;
+  height: 250px;
+  max-width: 80%;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.btn-login {
+  width: 100%;
+  margin-top: 16px;
+  padding: 12px 0;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(90deg, #30afe6, #0068b8);
+  color: #fff;
+
+  transition: all 0.2s ease;
+}
+
+.btn-login:hover {
+  opacity: 0.92;
+  transform: translateY(-1px);
+}
+
+.btn-login:active {
+  transform: translateY(0);
+}
+
+.btn-login:disabled {
+  background: #94a3b8;
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+/* ======================
+   🎄 CHRISTMAS THEME OVERRIDE
+====================== */
+
+/* HEADER */
+.app-header {
+  background: linear-gradient(90deg, #30afe6, #0068b8);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+
+}
+
+/* Brand Noel */
+.brand::after {
+  content: "🎄";
+  font-size: 40px;
+  margin-left: 10px;
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.7));
+}
+
+/* Logout */
+.btn-logout {
+  background: white;
+  color: #0068b8;
+  border-radius: 999px;
+
+  padding: 10px 17px;
+  font-size: 15px;
+  font-weight: 700;
+
+  border: 2px solid #0068b8;
+  cursor: pointer;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  transition: all 0.2s ease;
+}
+
+.btn-logout:hover {
+  background: #30afe6;
+  color: #000;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+.btn-logout:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+
+/* Search */
+.search-box input {
+  border-radius: 999px;
+}
+
+.btn-scan {
+  background: linear-gradient(90deg, #30afe6, #0068b8);
+  color: white;
+  border-radius: 999px;
+}
+
+.btn-scan:hover {
+  background: #61b8ff;
+  color: #146b3a;
+}
+
+/* CAMERA */
+.header-video {
+  border: 3px solid #0068b8;
+  box-shadow: 0 0 12px rgba(192, 237, 255, 0.6);
+}
+
+/* CATEGORY */
+.btn-cat.active {
+  background: linear-gradient(90deg, #30afe6, #0068b8);
+}
+
+/* ======================
+   CART CHRISTMAS
+====================== */
+
+.cart-panel {
+  border: 2px solid #0068b8;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Cart header */
+.cart-header h3 {
+  font-weight: 700;
+}
+
+.cart-header .badge {
+  background: #b11226;
+}
+
+/* Cart item */
+.cart-item {
+  background: #dbfaff;
+  border: 1px dashed #30afe6;
+}
+
+/* Clear cart */
+.btn-clear {
+  color: #b11226;
+  font-weight: 600;
+}
+
+/* Footer */
+.cart-footer .total {
+  color: #b11226;
+  font-size: 1.2rem;
+}
+
+/* Checkout */
+.btn-checkout {
+  background: linear-gradient(90deg, #30afe6, #0068b8);
+  border-radius: 999px;
+}
+
+.btn-checkout:hover {
+  background: #dbfaff;
+  color: #000;
+}
+
+/* ======================
+   🎁 PRODUCT CARD
+====================== */
+
+.product-card:hover {
+  box-shadow: 0 8px 20px rgba(177, 18, 38, 0.35);
+  transform: translateY(-4px) scale(1.03);
+}
+
+.product-price {
+  color: #b11226;
+}
+
+/* ======================
+   🎅 PAYMENT MODAL
+====================== */
+
+.modal {
+  border: 3px solid #146b3a;
+}
+
+.methods button.active {
+  background: linear-gradient(90deg, #30afe6, #0068b8);
+  color: white;
+  border-color: transparent;
+}
+
+.btn-confirm {
+  background: linear-gradient(90deg, #30afe6, #0068b8);
+}
+
+.btn-confirm:hover {
+  background: #ffd700;
+  color: #000;
+}
+
+/* ❄️ Header Snow Effect */
+.snow-header {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.snow-header .snowflake {
+  position: absolute;
+  top: -10px;
+  color: white;
+  font-size: 12px;
+  user-select: none;
+  pointer-events: none;
+  opacity: 0.8;
+  animation-name: fall, sway;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes sway {
+  0% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(10px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.app-login {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background:
+    linear-gradient(135deg,
+      #dbeafe 0%,
+      #bfdbfe 50%,
+      #93c5fd 100%);
+
+}
+
+.login-form {
+  width: 420px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  padding: 40px;
+  border-radius: 24px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.login-form h2 {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 700;
+  color: #1e3a8a;
+  margin-bottom: 30px;
+}
+
+.login-form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #334155;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 12px 4px;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  font-size: 15px;
+  margin-bottom: 18px;
+  transition: 0.25s;
+}
+
+.login-form input:focus {
+  outline: none;
+
+  border-color: #2563eb;
+
+  box-shadow:
+    0 0 0 4px rgba(37, 99, 235, 0.15);
+}
+
+.btn-login {
+  width: 100%;
+
+  border: none;
+
+  border-radius: 12px;
+
+  padding: 14px;
+
+  background: #2563eb;
+
+  color: white;
+
+  font-size: 16px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.25s;
+}
+
+.btn-login:hover {
+  background: #1d4ed8;
+
+  transform: translateY(-1px);
+}
+
+.btn-login:disabled {
+  opacity: .7;
+  cursor: not-allowed;
+}
+
+.login-logo {
+  width: 80px;
+  height: 80px;
+
+  margin: 0 auto 20px;
+
+  border-radius: 50%;
+
+  background: #dbeafe;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 38px;
+}
+
+.login-brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  margin-bottom: 24px;
+
+  color: #1e3a8a;
+
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.logo-icon {
+  width: 32px;
+  height: 32px;
+
+  color: #1e3a8a;
+
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, .15));
+}
+
+.login-subtitle {
+  text-align: center;
+  color: #64748b;
+  font-size: 15px;
+  margin-bottom: 30px;
+}
+
+.employee-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.btn-checkin,
+.btn-check-out,
+.btn-logout {
+  height: 38px;
+  min-width: 110px;
+  color: #1e3a8a;
+
+  border: none;
+  border-radius: 999px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  transition: all .2s ease;
+}
+
+
+/* InvoicePrint.css */
+
+.invoice-print {
+  width: 80mm;
+  margin: 0 auto;
+  padding: 10px;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  color: #000;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+.invoice-print * {
+  box-sizing: border-box;
+}
+
+.invoice-center {
+  text-align: center;
+}
+
+.invoice-right {
+  text-align: right;
+}
+
+.invoice-store-name {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.invoice-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 15px 0 10px;
+}
+
+.invoice-info p {
+  margin: 4px 0;
+}
+
+.invoice-line {
+  border-top: 1px dashed #000;
+  margin: 10px 0;
+}
+
+.invoice-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.invoice-table th {
+  border-bottom: 1px solid #000;
+  padding: 6px 2px;
+}
+
+.invoice-table td {
+  padding: 7px 2px;
+  vertical-align: top;
+}
+
+.invoice-product-price {
+  font-size: 11px;
+  margin-top: 3px;
+}
+
+.invoice-total {
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.invoice-footer {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.invoice-footer p {
+  margin: 5px 0;
+}
+
+@media print {
+  @page {
+    size: 80mm auto;
+    margin: 0;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  .invoice-print {
+    width: 80mm;
+    margin: 0;
+    padding: 5mm;
+    box-shadow: none;
+  }
+}

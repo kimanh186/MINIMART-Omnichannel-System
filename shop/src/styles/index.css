@@ -1,0 +1,40 @@
+@import './fonts.css';
+@import './tailwind.css';
+@import './theme.css';
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 24px;
+    flex-wrap: wrap;
+}
+
+.pagination button {
+    min-width: 40px;
+    height: 40px;
+    border: 1px solid #d1d5db;
+    background: #fff;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: .2s;
+    font-weight: 600;
+}
+
+.pagination button:hover:not(:disabled) {
+    background: linear-gradient(90deg, #30afe6, #0068b8);
+    color: white;
+    border-color: #0068b8;
+}
+
+.pagination button.active {
+    background: linear-gradient(90deg, #30afe6, #0068b8);
+    color: white;
+    border-color: #0068b8;
+}
+
+.pagination button:disabled {
+    opacity: .5;
+    cursor: not-allowed;
+}
