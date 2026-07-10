@@ -21,18 +21,21 @@ class AuthController extends Controller
             'pos_machine' => 'nullable|string',
         ]);
 
-        $employee = Employee::with('branch')
-            ->where(
-                'username',
-                $request->username
-            )
-            ->first();
+       $employee = Employee::with('branch')
+    ->where('username', $request->username)
+    ->first();
 
-        if (!$employee || !Hash::check($request->password, $employee->password)) {
-            return response()->json([
-                'message' => 'Username hoặc mật khẩu không đúng'
-            ], 401);
-        }
+if (!$employee) {
+    return response()->json([
+        'message' => 'Tài khoản không tồn tại'
+    ], 401);
+}
+
+if (!Hash::check($request->password, $employee->password)) {
+    return response()->json([
+        'message' => 'Mật khẩu không đúng'
+    ], 401);
+}
 
         // AUTO đóng ca cũ nếu còn tồn tại
         EmployeeSession::where('employee_id', $employee->id)
@@ -106,10 +109,6 @@ class AuthController extends Controller
             'logout_at' => $logout,
             'worked_minutes' => $login->diffInMinutes($logout),
         ]);
-
-
-
-
         $request->user()->currentAccessToken()->delete();
 
         return response()->json([

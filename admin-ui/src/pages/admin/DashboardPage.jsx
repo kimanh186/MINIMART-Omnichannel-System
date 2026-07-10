@@ -12,6 +12,10 @@ import {
 } from "recharts";
 
 export default function DashboardPage() {
+    const user = JSON.parse(
+    localStorage.getItem("admin_user")
+);
+console.log("ADMIN USER:", user);
     const [data, setData] = useState(null);
     const [showEmployees, setShowEmployees] = useState(false);
 
@@ -56,8 +60,13 @@ export default function DashboardPage() {
     return (
         <div className="dashboard-page">
             <h2 className="report-title">
-                DASHBOARD
-            </h2>
+    DASHBOARD
+</h2>
+
+<p>
+    Quản lý chi nhánh:{" "}
+    <strong>{user?.full_name || "Không có tên"}</strong>
+</p>
 
             {/* THỐNG KÊ */}
             <div className="dashboard-grid">
@@ -321,7 +330,7 @@ export default function DashboardPage() {
                     />
                 </BarChart>
             </div>
-            {/* TOP SẢN PHẨM BÁN CHẠY */}
+
             <div
                 style={{
                     background: "#fff",
