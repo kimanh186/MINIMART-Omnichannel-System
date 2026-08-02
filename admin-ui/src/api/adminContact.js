@@ -1,55 +1,31 @@
-import axios from "axios";
-
-const API_URL = "http://127.0.0.1:8000/api/admin";
-
-const getToken = () => {
-  return localStorage.getItem("admin_token");
-};
-
-const authConfig = () => ({
-  headers: {
-    Authorization: `Bearer ${getToken()}`,
-    Accept: "application/json",
-  },
-});
+import axiosClient from "./axiosClient"; // sửa đường dẫn cho đúng
 
 const adminContact = {
-getAll: async (params = {}) => {
-  const response = await axios.get(
-    `${API_URL}/contacts`,
-    {
-      ...authConfig(),
+  getAll: async (params = {}) => {
+    const response = await axiosClient.get("/admin/contacts", {
       params,
-    }
-  );
+    });
 
-  return response.data;
-},
+    return response.data;
+  },
 
   getById: async (id) => {
-    const response = await axios.get(
-      `${API_URL}/contacts/${id}`,
-      authConfig()
-    );
+    const response = await axiosClient.get(`/admin/contacts/${id}`);
 
     return response.data;
   },
 
   updateStatus: async (id, status) => {
-    const response = await axios.put(
-      `${API_URL}/contacts/${id}/status`,
-      { status },
-      authConfig()
+    const response = await axiosClient.put(
+      `/admin/contacts/${id}/status`,
+      { status }
     );
 
     return response.data;
   },
 
   delete: async (id) => {
-    const response = await axios.delete(
-      `${API_URL}/contacts/${id}`,
-      authConfig()
-    );
+    const response = await axiosClient.delete(`/admin/contacts/${id}`);
 
     return response.data;
   },
