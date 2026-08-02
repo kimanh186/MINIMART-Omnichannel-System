@@ -1,28 +1,13 @@
-import axios from "axios";
+import axiosClient from "./axiosClient"; // chỉnh lại đường dẫn nếu khác thư mục
 
-const API_URL = "http://localhost:8000/api/admin";
+export const adminLogin = async (username, password) => {
+  const res = await axiosClient.post("/admin/login", {
+    username,
+    password,
+  });
 
-export const adminLogin = async (
-  username,
-  password
-) => {
-  const res = await axios.post(
-    `${API_URL}/login`,
-    {
-      username,
-      password,
-    }
-  );
-
-  localStorage.setItem(
-    "admin_token",
-    res.data.token
-  );
-
-  localStorage.setItem(
-    "admin_user",
-    JSON.stringify(res.data.user)
-  );
+  localStorage.setItem("admin_token", res.data.token);
+  localStorage.setItem("admin_user", JSON.stringify(res.data.user));
 
   return res.data;
 };
