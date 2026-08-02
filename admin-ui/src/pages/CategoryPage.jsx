@@ -8,6 +8,7 @@ function CategoryPage() {
   const user = JSON.parse(
     localStorage.getItem("admin_user")
   );
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
   const [categories, setCategories] = useState([]);
   const [keyword, setKeyword] = useState("");
   const navigate = useNavigate();
@@ -138,10 +139,10 @@ function CategoryPage() {
               <td>
                 {c.image ? (
                   <img
-                    src={`http://localhost:8000/storage/${c.image}`}
-                    alt={c.name}
-                    className="product-img"
-                  />
+  src={`${BACKEND_URL}/storage/${c.image}`}
+  alt={c.name}
+  className="product-img"
+/>
                 ) : (
                   "-"
                 )}
