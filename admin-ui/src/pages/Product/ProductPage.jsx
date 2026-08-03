@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axiosClient from "../api/axiosClient";
+import axiosClient from "../../api/axiosClient";
 import { getProducts, deleteProduct } from "../api/adminProduct";
 import { FaEye, FaTrash, FaEdit, FaPlus } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";

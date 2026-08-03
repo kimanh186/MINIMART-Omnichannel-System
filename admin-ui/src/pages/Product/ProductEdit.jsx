@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
-import axiosClient from "../api/axiosClient";
+import axiosClient from "../../api/axiosClient";
 import { getProductById, updateProduct } from "../api/adminProduct";
 import { toast } from "react-toastify";
 

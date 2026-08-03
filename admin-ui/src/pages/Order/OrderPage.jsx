@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { getOrders } from "../api/adminOrder";
 import { useNavigate } from "react-router-dom";
 import { FaEye, FaSearch } from "react-icons/fa";
-import axiosClient from "../api/axiosClient";
+import axiosClient from "../../api/axiosClient";
 
 export default function OrderPage() {
   const user = JSON.parse(

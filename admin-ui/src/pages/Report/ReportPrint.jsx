@@ -1,7 +1,7 @@
 import { useEffect, useState, Fragment } from "react";
 import { getReports } from "../api/adminReport";
 import { Link, useNavigate } from "react-router-dom";
-import axiosClient from "../api/axiosClient";
+import axiosClient from "../../api/axiosClient";
 import { useSearchParams } from "react-router-dom";
 
 function ReportPrint({ startDate = "", endDate = "" }) {

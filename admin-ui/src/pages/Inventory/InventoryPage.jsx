@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getInventories, deleteInventory } from "../api/adminInventory";
-import axiosClient from "../api/axiosClient";
+import axiosClient from "../../api/axiosClient";
 import { FaEye, FaTrash, FaPlus, FaPrint } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";

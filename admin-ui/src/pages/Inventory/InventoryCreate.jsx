@@ -4,7 +4,7 @@ import {
   createInventory,
   getInventoryByProduct
 } from "../api/adminInventory";
-import axiosClient from "../api/axiosClient";
+import axiosClient from "../../api/axiosClient";
 import { toast } from "react-toastify";
 
 function InventoryCreate() {

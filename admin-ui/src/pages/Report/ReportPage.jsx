@@ -2,7 +2,7 @@ import { useEffect, useState, Fragment } from "react";
 import { getReports } from "../api/adminReport";
 import { useNavigate } from "react-router-dom";
 import { FaEye, FaSearch } from "react-icons/fa";
-import axiosClient from "../api/axiosClient";
+import axiosClient from "../../api/axiosClient";
 
 function ReportPage() {
   const user = JSON.parse(
